@@ -31,7 +31,7 @@ const ManageProduct = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [product, setProduct] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
+  const limit =10;
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
 
@@ -63,7 +63,7 @@ const ManageProduct = () => {
         `${import.meta.env.VITE_API_URL}/user/getAllCategory`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-      console.log("Result:", res);
+      // console.log("Result:", res);
 
       setCategories(res.data.result.category || []);
     } catch (error) {
@@ -215,7 +215,9 @@ const ManageProduct = () => {
             ) : (
               product.map((pro, index) => (
                 <tr key={pro._id}>
-                  <td>{index + 1}</td>
+                  {/* <td>{index + 1}</td> */}
+                 <td>{(page - 1) * limit + index + 1}</td>
+
                   <td>{pro.name}</td>
                   <td>₹{pro.price}</td>
                   <td>
@@ -320,9 +322,9 @@ const ManageProduct = () => {
                       {selectedProduct.category?.name ||
                         selectedProduct.category}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong>Unit:</strong> {selectedProduct.unit}
-                    </p>
+                    </p> */}
                     <p>
                       <strong>Description:</strong>{" "}
                       {selectedProduct.description}
@@ -333,26 +335,26 @@ const ManageProduct = () => {
                         ? selectedProduct.store.join(", ")
                         : selectedProduct.store}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong>In Stock:</strong>{" "}
                       {selectedProduct.in_stock ? "Yes" : "No"}
                     </p>
                     <p>
                       <strong>Subscription Available:</strong>{" "}
                       {selectedProduct.subscription_available ? "Yes" : "No"}
-                    </p>
+                    </p> */}
                     <p>
                       <strong>Expire Date:</strong>{" "}
                       {selectedProduct.expire_date}
                     </p>
-                    <p>
+                    {/* <p>
                       <strong>Subscription Frequency:</strong>{" "}
                       {selectedProduct.subscription_frequency}
                     </p>
                     <p>
                       <strong>Max Order Limit:</strong>{" "}
                       {selectedProduct.max_order_limit}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               )}
@@ -416,25 +418,8 @@ const ManageProduct = () => {
                   })
                 }
               />
-              {/* <input
-                className="form-control mb-3"
-                placeholder="In Stock (Yes/No)"
-                value={newProduct.in_stock}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, in_stock: e.target.value })
-                }
-              /> */}
-              {/* <input
-                className="form-control mb-3"
-                placeholder="Subscription Available (Yes/No)"
-                value={newProduct.subscription_available}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    subscription_available: e.target.value,
-                  })
-                }
-              /> */}
+            
+              
               <label className="form-label">Expire Date</label>
               <input
                 type="date"
@@ -447,22 +432,7 @@ const ManageProduct = () => {
                   })
                 }
               />
-              {/* <select
-                className="form-select mb-3"
-                value={newProduct.subscription_frequency}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    subscription_frequency: e.target.value,
-                  })
-                }
-              >
-                <option value="">Subscription Frequency</option>
-                <option value="daily">Daily</option>
-                <option value="alternate_day">Alternate Day</option>
-                <option value="weekend_only">Weekend Only</option>
-                <option value="weekly">Weekly</option>
-              </select> */}
+              
               <input
                 type="file"
                 className="form-control mb-3"
@@ -470,17 +440,7 @@ const ManageProduct = () => {
                   setNewProduct({ ...newProduct, image: e.target.files[0] })
                 }
               />
-              {/* <input
-                className="form-control mb-3"
-                placeholder="Max Order Limit"
-                value={newProduct.max_order_limit}
-                onChange={(e) =>
-                  setNewProduct({
-                    ...newProduct,
-                    max_order_limit: e.target.value,
-                  })
-                }
-              /> */}
+             
             </div>
             <div className="modal-footer">
               <button className="btn btn-primary" onClick={handleAdd}>

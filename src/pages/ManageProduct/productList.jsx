@@ -62,7 +62,7 @@ const dispatch =useDispatch();
   ) : (
     products.map((pro, index) => (
       <tr key={pro._id}>
-        <td>{index + 1}</td>
+        <td>{(page - 1) * LIMIT + index + 1}</td>
         <td>{pro.name}</td>
         <td>₹{pro.price}</td>
 
