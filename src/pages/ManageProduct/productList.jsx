@@ -144,14 +144,14 @@ const dispatch =useDispatch();
 
             <div className="col-md-8">
               <p><strong>Category:</strong> {selectedProduct.category?.name || selectedProduct.category}</p>
-              <p><strong>Unit:</strong> {selectedProduct.unit}</p>
+              {/* <p><strong>Unit:</strong> {selectedProduct.unit}</p> */}
               <p><strong>Description:</strong> {selectedProduct.description}</p>
               <p><strong>Store:</strong> {Array.isArray(selectedProduct.store) ? selectedProduct.store.join(", ") : selectedProduct.store}</p>
-              <p><strong>In Stock:</strong> {selectedProduct.in_stock ? "Yes" : "No"}</p>
-              <p><strong>Subscription Available:</strong> {selectedProduct.subscription_available ? "Yes" : "No"}</p>
+              {/* <p><strong>In Stock:</strong> {selectedProduct.in_stock ? "Yes" : "No"}</p> */}
+              {/* <p><strong>Subscription Available:</strong> {selectedProduct.subscription_available ? "Yes" : "No"}</p> */}
               <p><strong>Expire Date:</strong> {selectedProduct.expire_date}</p>
-              <p><strong>Subscription Frequency:</strong> {selectedProduct.subscription_frequency}</p>
-              <p><strong>Max Order Limit:</strong> {selectedProduct.max_order_limit}</p>
+              {/* <p><strong>Subscription Frequency:</strong> {selectedProduct.subscription_frequency}</p> */}
+              {/* <p><strong>Max Order Limit:</strong> {selectedProduct.max_order_limit}</p> */}
             </div>
           </div>
         )}
