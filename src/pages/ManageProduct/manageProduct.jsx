@@ -184,7 +184,7 @@ const ManageProduct = () => {
   return (
     <div className="container-fluid py-4">
       <div className="d-flex justify-content-end align-items-center mb-4">
-        {/* <h2 className="fs-4">Product Management</h2> */}
+       
         <button
           className="btn btn-primary d-flex align-items-center gap-2"
           data-bs-toggle="modal"
@@ -215,7 +215,7 @@ const ManageProduct = () => {
             ) : (
               product.map((pro, index) => (
                 <tr key={pro._id}>
-                  {/* <td>{index + 1}</td> */}
+               
                  <td>{(page - 1) * limit + index + 1}</td>
 
                   <td>{pro.name}</td>
@@ -223,7 +223,7 @@ const ManageProduct = () => {
                   <td>
                     {Array.isArray(pro.image) ? (
                       <img
-                        src={`${import.meta.env.VITE_API_URL}${pro.image[0]}`}
+                        src={Array.isArray(pro.image)? pro.image[0]:pro.image}
                         width="50"
                         height="50"
                         alt="product"
@@ -231,7 +231,7 @@ const ManageProduct = () => {
                       />
                     ) : (
                       <img
-                        src={`${import.meta.env.VITE_API_URL}${pro.image}`}
+                        src={Array.isArray(pro.image)? pro.image[0]:pro.image}
                         width="50"
                         height="50"
                         alt="product"
@@ -307,11 +307,11 @@ const ManageProduct = () => {
                 <div className="row">
                   <div className="col-md-4">
                     <img
-                      src={`${import.meta.env.VITE_API_URL}${
+                      src={
                         Array.isArray(selectedProduct.image)
                           ? selectedProduct.image[0]
                           : selectedProduct.image
-                      }`}
+                      }
                       className="img-fluid rounded"
                       alt="product"
                     />
@@ -335,26 +335,12 @@ const ManageProduct = () => {
                         ? selectedProduct.store.join(", ")
                         : selectedProduct.store}
                     </p>
-                    {/* <p>
-                      <strong>In Stock:</strong>{" "}
-                      {selectedProduct.in_stock ? "Yes" : "No"}
-                    </p>
-                    <p>
-                      <strong>Subscription Available:</strong>{" "}
-                      {selectedProduct.subscription_available ? "Yes" : "No"}
-                    </p> */}
+                    
                     <p>
                       <strong>Expire Date:</strong>{" "}
                       {selectedProduct.expire_date}
                     </p>
-                    {/* <p>
-                      <strong>Subscription Frequency:</strong>{" "}
-                      {selectedProduct.subscription_frequency}
-                    </p>
-                    <p>
-                      <strong>Max Order Limit:</strong>{" "}
-                      {selectedProduct.max_order_limit}
-                    </p> */}
+                    
                   </div>
                 </div>
               )}
@@ -398,14 +384,7 @@ const ManageProduct = () => {
                   setNewProduct({ ...newProduct, price: e.target.value })
                 }
               />
-              {/* <input
-                className="form-control mb-3"
-                placeholder="Unit (e.g. Kg, Ltr)"
-                value={newProduct.unit}
-                onChange={(e) =>
-                  setNewProduct({ ...newProduct, unit: e.target.value })
-                }
-              /> */}
+             
               <textarea
                 className="form-control mb-3"
                 placeholder="Description"

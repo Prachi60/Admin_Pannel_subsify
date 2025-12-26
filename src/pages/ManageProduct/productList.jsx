@@ -69,7 +69,7 @@ const dispatch =useDispatch();
         <td>
           {Array.isArray(pro.image) ? (
             <img
-              src={`${import.meta.env.VITE_API_URL}${pro.image[0]}`}
+              src={Array.isArray(pro.image)? pro.image[0]:pro.image}
               width="50"
               height="50"
               alt="product"
@@ -77,7 +77,7 @@ const dispatch =useDispatch();
             />
           ) : (
             <img
-              src={`${import.meta.env.VITE_API_URL}${pro.image}`}
+              src={Array.isArray(pro.image)? pro.image[0]:pro.image}
               width="50"
               height="50"
               alt="product"
