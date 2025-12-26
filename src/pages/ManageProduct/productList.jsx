@@ -132,11 +132,11 @@ const dispatch =useDispatch();
           <div className="row">
             <div className="col-md-4">
               <img
-                src={`${import.meta.env.VITE_API_URL}${
+                src={
                   Array.isArray(selectedProduct.image)
                     ? selectedProduct.image[0]
                     : selectedProduct.image
-                }`}
+                }
                 className="img-fluid rounded"
                 alt="product"
               />
